@@ -1,23 +1,26 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
 
-function App() {
+const App = () => {
+  const [counter, setCounter] = useState(0);
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <button onClick={() => {
+        if (counter > 0) {
+          setCounter(counter - 1)
+        }
+      }}>-</button>
+      <h1>{counter}</h1>
+      {/* <button onClick={() => setCounter(counter + 1)}>+</button> */}
+      <button onClick={() => {
+        if (counter < 100) {
+          setCounter(prevCounter => prevCounter + 1)
+        } else if (counter === 100) {
+          alert('You have reached the maximum allowed!');
+        }
+      }
+      }>+</button>
     </div>
   );
 }
